@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 const int c = 12345;
+int g;
 
 void bin()
 {
@@ -24,8 +25,10 @@ void addr()
 
     printf("%0lX\n", &x);
     printf("%0lX\n", &c);
-    printf("%0lX\n", &addr);
+    printf("%0lX\n", &g);
     printf("%0lX\n", p);
+    printf("%0lX\n", &addr);
+    printf("%0lX\n", &printf);
 }
 
 void mem()
