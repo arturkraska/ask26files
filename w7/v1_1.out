@@ -1,0 +1,161 @@
+Iterations:        100
+Instructions:      800
+Total Cycles:      309
+Total uOps:        1000
+
+Dispatch Width:    4
+uOps Per Cycle:    3.24
+IPC:               2.59
+Block RThroughput: 2.5
+
+
+Instruction Info:
+[1]: #uOps
+[2]: Latency
+[3]: RThroughput
+[4]: MayLoad
+[5]: MayStore
+[6]: HasSideEffects (U)
+
+[1]    [2]    [3]    [4]    [5]    [6]    Instructions:
+ 1      1     0.25                        addl	%esi, %edi
+ 1      1     0.25                        addl	%edx, %edi
+ 1      1     0.25                        addl	%ecx, %edi
+ 1      1     0.25                        addl	%r8d, %edi
+ 1      1     0.25                        addl	%r9d, %edi
+ 1      1     0.25                        movl	%edi, %eax
+ 1      1     0.25                        movl	$0, %edi
+ 3      7     1.00                  U     retq
+
+
+Resources:
+[0]   - HWDivider
+[1]   - HWFPDivider
+[2]   - HWPort0
+[3]   - HWPort1
+[4]   - HWPort2
+[5]   - HWPort3
+[6]   - HWPort4
+[7]   - HWPort5
+[8]   - HWPort6
+[9]   - HWPort7
+
+
+Resource pressure per iteration:
+[0]    [1]    [2]    [3]    [4]    [5]    [6]    [7]    [8]    [9]    
+ -      -     2.25   2.25   0.50   0.50    -     2.25   2.25    -     
+
+Resource pressure by instruction:
+[0]    [1]    [2]    [3]    [4]    [5]    [6]    [7]    [8]    [9]    Instructions:
+ -      -     0.24   0.26    -      -      -     0.49   0.01    -     addl	%esi, %edi
+ -      -     0.25   0.25    -      -      -     0.25   0.25    -     addl	%edx, %edi
+ -      -     0.25   0.25    -      -      -     0.25   0.25    -     addl	%ecx, %edi
+ -      -     0.26   0.25    -      -      -     0.25   0.24    -     addl	%r8d, %edi
+ -      -     0.25   0.50    -      -      -     0.25    -      -     addl	%r9d, %edi
+ -      -     0.26   0.24    -      -      -     0.24   0.26    -     movl	%edi, %eax
+ -      -     0.25   0.26    -      -      -     0.25   0.24    -     movl	$0, %edi
+ -      -     0.49   0.24   0.50   0.50    -     0.27   1.00    -     retq
+
+
+Timeline view:
+                    0123456789          012345678
+Index     0123456789          0123456789         
+
+[0,0]     DeER .    .    .    .    .    .    .  .   addl	%esi, %edi
+[0,1]     D=eER.    .    .    .    .    .    .  .   addl	%edx, %edi
+[0,2]     D==eER    .    .    .    .    .    .  .   addl	%ecx, %edi
+[0,3]     D===eER   .    .    .    .    .    .  .   addl	%r8d, %edi
+[0,4]     .D===eER  .    .    .    .    .    .  .   addl	%r9d, %edi
+[0,5]     .D====eER .    .    .    .    .    .  .   movl	%edi, %eax
+[0,6]     .DeE----R .    .    .    .    .    .  .   movl	$0, %edi
+[0,7]     . DeeeeeeeER   .    .    .    .    .  .   retq
+[1,0]     . DeE------R   .    .    .    .    .  .   addl	%esi, %edi
+[1,1]     .  DeE-----R   .    .    .    .    .  .   addl	%edx, %edi
+[1,2]     .  D=eE----R   .    .    .    .    .  .   addl	%ecx, %edi
+[1,3]     .  D==eE---R   .    .    .    .    .  .   addl	%r8d, %edi
+[1,4]     .  D===eE--R   .    .    .    .    .  .   addl	%r9d, %edi
+[1,5]     .   D===eE-R   .    .    .    .    .  .   movl	%edi, %eax
+[1,6]     .   DeE----R   .    .    .    .    .  .   movl	$0, %edi
+[1,7]     .    D=eeeeeeeER    .    .    .    .  .   retq
+[2,0]     .    DeE-------R    .    .    .    .  .   addl	%esi, %edi
+[2,1]     .    .DeE------R    .    .    .    .  .   addl	%edx, %edi
+[2,2]     .    .D=eE-----R    .    .    .    .  .   addl	%ecx, %edi
+[2,3]     .    .D==eE----R    .    .    .    .  .   addl	%r8d, %edi
+[2,4]     .    .D===eE---R    .    .    .    .  .   addl	%r9d, %edi
+[2,5]     .    . D===eE--R    .    .    .    .  .   movl	%edi, %eax
+[2,6]     .    . DeE-----R    .    .    .    .  .   movl	$0, %edi
+[2,7]     .    .  DeeeeeeeER  .    .    .    .  .   retq
+[3,0]     .    .  DeE------R  .    .    .    .  .   addl	%esi, %edi
+[3,1]     .    .   DeE-----R  .    .    .    .  .   addl	%edx, %edi
+[3,2]     .    .   D=eE----R  .    .    .    .  .   addl	%ecx, %edi
+[3,3]     .    .   D==eE---R  .    .    .    .  .   addl	%r8d, %edi
+[3,4]     .    .   D===eE--R  .    .    .    .  .   addl	%r9d, %edi
+[3,5]     .    .    D===eE-R  .    .    .    .  .   movl	%edi, %eax
+[3,6]     .    .    DeE----R  .    .    .    .  .   movl	$0, %edi
+[3,7]     .    .    .DeeeeeeeER    .    .    .  .   retq
+[4,0]     .    .    .DeE------R    .    .    .  .   addl	%esi, %edi
+[4,1]     .    .    . DeE-----R    .    .    .  .   addl	%edx, %edi
+[4,2]     .    .    . D=eE----R    .    .    .  .   addl	%ecx, %edi
+[4,3]     .    .    . D==eE---R    .    .    .  .   addl	%r8d, %edi
+[4,4]     .    .    . D===eE--R    .    .    .  .   addl	%r9d, %edi
+[4,5]     .    .    .  D===eE-R    .    .    .  .   movl	%edi, %eax
+[4,6]     .    .    .  DeE----R    .    .    .  .   movl	$0, %edi
+[4,7]     .    .    .   D=eeeeeeeER.    .    .  .   retq
+[5,0]     .    .    .   DeE-------R.    .    .  .   addl	%esi, %edi
+[5,1]     .    .    .    DeE------R.    .    .  .   addl	%edx, %edi
+[5,2]     .    .    .    D=eE-----R.    .    .  .   addl	%ecx, %edi
+[5,3]     .    .    .    D==eE----R.    .    .  .   addl	%r8d, %edi
+[5,4]     .    .    .    D===eE---R.    .    .  .   addl	%r9d, %edi
+[5,5]     .    .    .    .D===eE--R.    .    .  .   movl	%edi, %eax
+[5,6]     .    .    .    .DeE-----R.    .    .  .   movl	$0, %edi
+[5,7]     .    .    .    . DeeeeeeeER   .    .  .   retq
+[6,0]     .    .    .    . DeE------R   .    .  .   addl	%esi, %edi
+[6,1]     .    .    .    .  DeE-----R   .    .  .   addl	%edx, %edi
+[6,2]     .    .    .    .  D=eE----R   .    .  .   addl	%ecx, %edi
+[6,3]     .    .    .    .  D==eE---R   .    .  .   addl	%r8d, %edi
+[6,4]     .    .    .    .  D===eE--R   .    .  .   addl	%r9d, %edi
+[6,5]     .    .    .    .   D===eE-R   .    .  .   movl	%edi, %eax
+[6,6]     .    .    .    .   DeE----R   .    .  .   movl	$0, %edi
+[6,7]     .    .    .    .    DeeeeeeeER.    .  .   retq
+[7,0]     .    .    .    .    DeE------R.    .  .   addl	%esi, %edi
+[7,1]     .    .    .    .    .DeE-----R.    .  .   addl	%edx, %edi
+[7,2]     .    .    .    .    .D=eE----R.    .  .   addl	%ecx, %edi
+[7,3]     .    .    .    .    .D==eE---R.    .  .   addl	%r8d, %edi
+[7,4]     .    .    .    .    .D===eE--R.    .  .   addl	%r9d, %edi
+[7,5]     .    .    .    .    . D===eE-R.    .  .   movl	%edi, %eax
+[7,6]     .    .    .    .    . DeE----R.    .  .   movl	$0, %edi
+[7,7]     .    .    .    .    .  DeeeeeeeER  .  .   retq
+[8,0]     .    .    .    .    .  DeE------R  .  .   addl	%esi, %edi
+[8,1]     .    .    .    .    .   DeE-----R  .  .   addl	%edx, %edi
+[8,2]     .    .    .    .    .   D=eE----R  .  .   addl	%ecx, %edi
+[8,3]     .    .    .    .    .   D==eE---R  .  .   addl	%r8d, %edi
+[8,4]     .    .    .    .    .   D===eE--R  .  .   addl	%r9d, %edi
+[8,5]     .    .    .    .    .    D===eE-R  .  .   movl	%edi, %eax
+[8,6]     .    .    .    .    .    DeE----R  .  .   movl	$0, %edi
+[8,7]     .    .    .    .    .    .D=eeeeeeeER .   retq
+[9,0]     .    .    .    .    .    .DeE-------R .   addl	%esi, %edi
+[9,1]     .    .    .    .    .    . DeE------R .   addl	%edx, %edi
+[9,2]     .    .    .    .    .    . D=eE-----R .   addl	%ecx, %edi
+[9,3]     .    .    .    .    .    . D==eE----R .   addl	%r8d, %edi
+[9,4]     .    .    .    .    .    . D===eE---R .   addl	%r9d, %edi
+[9,5]     .    .    .    .    .    .  D===eE--R .   movl	%edi, %eax
+[9,6]     .    .    .    .    .    .  DeE-----R .   movl	$0, %edi
+[9,7]     .    .    .    .    .    .   DeeeeeeeER   retq
+
+
+Average Wait times (based on the timeline view):
+[0]: Executions
+[1]: Average time spent waiting in a scheduler's queue
+[2]: Average time spent waiting in a scheduler's queue while ready
+[3]: Average time elapsed from WB until retire stage
+
+      [0]    [1]    [2]    [3]
+0.     10    1.0    0.1    5.7       addl	%esi, %edi
+1.     10    1.1    0.0    4.8       addl	%edx, %edi
+2.     10    2.1    0.0    3.9       addl	%ecx, %edi
+3.     10    3.1    0.0    3.0       addl	%r8d, %edi
+4.     10    4.0    0.0    2.1       addl	%r9d, %edi
+5.     10    4.1    0.0    1.2       movl	%edi, %eax
+6.     10    1.0    1.0    4.3       movl	$0, %edi
+7.     10    1.3    1.3    0.0       retq
+       10    2.2    0.3    3.1       <total>
