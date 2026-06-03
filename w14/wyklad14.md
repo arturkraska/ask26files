@@ -1,0 +1,1 @@
+Pliki pochodzą z książki *Computer Systems: A Programmer's Perspective*, rozdział `5.14`.
